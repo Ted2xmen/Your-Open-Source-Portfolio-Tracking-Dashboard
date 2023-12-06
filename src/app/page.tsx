@@ -1,39 +1,62 @@
-import { Card, Grid, Col, Title, Text } from "@tremor/react";
-import Total from "@/components/Total";
-import Gold from "@/components/Gold";
-import Stocks from "@/components/Stocks";
-import Review from "@/components/Review";
+"use client";
+import Summary from "@/components/Summary";
+import CustomTable from "@/components/CustomTable";
+import { Card, Title, Text, Grid, TextInput } from "@tremor/react";
+import { NumberInput } from "@tremor/react";
+import { Button } from "@tremor/react";
+import { Select, SelectItem } from "@tremor/react";
 
-export default function Home() {
+export default function Example() {
   return (
     <main>
-      <div className="flex items-center justify-between mx-6">
-        <Title className="text-slate-800 font-normal text-3xl">
-          Your Open Source Portfolio Tracking Dashboard
-        </Title>
-        <Text>Welcome, Tugrul</Text>
-      </div>
-      <Grid numColsLg={6} className="gap-6">
-        {/* Main section */}
-        <Col numColSpanLg={4}>
-          <Card className="h-full mt-6">
-            <Total />
-            <Review />
-          </Card>
-        </Col>
+      <Title>Buy Wisely</Title>
+      <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</Text>
 
-        {/* KPI sidebar */}
-        <Col numColSpanLg={2}>
-          <div className="space-y-6 mt-6">
-            <Card>
-              <Gold />
-            </Card>
-            <Card>
-              <Stocks />
-            </Card>
+      {/* KPI section */}
+      <Grid numItemsMd={2} className="mt-6 gap-6 justify-end">
+        <Card>
+          {/* Placeholder to set height */}
+          {/* <CustomTable /> */}
+          <Text className="py-3">Product</Text>
+          <TextInput placeholder="Name..." />
+
+          <Text className="py-3">Price</Text>
+          <NumberInput placeholder="Amount..." />
+
+          <Text className="py-3">Monthly Uses</Text>
+          <NumberInput placeholder="" />
+
+          <div className="mt-8 w-full flex justify-end items-center gap-3">
+            <Text className="">Quality</Text>
+            <Select>
+              <SelectItem value="1">75-100</SelectItem>
+              <SelectItem value="2">Meters</SelectItem>
+              <SelectItem value="3">Miles</SelectItem>
+              <SelectItem value="4">Nautical Miles</SelectItem>
+            </Select>
+            <Text className="">Lifespan</Text>
+            <Select placeholder="Select Year">
+              <SelectItem value="1">3 Year</SelectItem>
+              <SelectItem value="2">4</SelectItem>
+              <SelectItem value="3">Miles</SelectItem>
+              <SelectItem value="4">Nautical Miles</SelectItem>
+            </Select>
+
+            <Button className="justify-end" size="md">
+              Add
+            </Button>
           </div>
-        </Col>
+        </Card>
+        <Card>
+          {/* Placeholder to set height */}
+          <Summary />
+        </Card>
       </Grid>
+
+      {/* Main section */}
+      <Card className="mt-6">
+        <CustomTable />
+      </Card>
     </main>
   );
 }
